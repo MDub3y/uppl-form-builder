@@ -13,6 +13,8 @@ upliance.ai has built India’s first AI cooking assistant designed for beginner
 ## Project Overview
 
 This project is a **dynamic form builder** assignment to be completed within 48 hours.
+Check out the live deployed app here:  
+🔗 [https://deft-longma-6a10bc.netlify.app/](https://deft-longma-6a10bc.netlify.app/)
 
 ---
 
