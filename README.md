@@ -59,6 +59,6 @@ Check out the live deployed app here:
 ```bash
 git clone https://github.com/your-username/upliance-form-builder.git
 cd upliance-form-builder
-npm install
-npm start
+bun install
+bun run dev
 ```
