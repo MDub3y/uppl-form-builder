@@ -1,5 +1,6 @@
+// src/pages/CreatePage.tsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Import useEffect
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
@@ -27,20 +28,37 @@ import {
   DateRange,
   List
 } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { RootState } from '../store';
-import { createNewForm, addField, saveForm, FormField } from '../store/slices/formBuilderSlice';
+// Import the new action
+import { createNewForm, addField, saveForm, FormField, resetCurrentForm } from '../store/slices/formBuilderSlice'; 
 import { useToast } from '../hooks/use-toast';
 import SortableFormBuilder from '../components/FormBuilder/SortableFormBuilder';
 
+interface LocationState {
+  from?: 'edit' | 'preview';
+}
+
 const CreatePage: React.FC = () => {
   const dispatch = useDispatch();
+  const location = useLocation(); 
   const { toast } = useToast();
   const currentForm = useSelector((state: RootState) => state.formBuilder.currentForm);
   const [formName, setFormName] = useState('');
   const [showFieldTypes, setShowFieldTypes] = useState(false);
   const [saveDialogOpen, setSaveDialogOpen] = useState(false);
   const [saveFormName, setSaveFormName] = useState('');
+
+useEffect(() => {
+    // Check if we are navigating to the /create page without a form already loaded.
+    // The `currentForm` state is populated by `loadForm` actions.
+    // If we're coming from "My Forms" or "Preview," `currentForm` will already be set.
+    // Only reset if no form is currently in the state.
+    if (!currentForm && location.state?.from !== 'edit' && location.state?.from !== 'preview') {
+      dispatch(resetCurrentForm());
+    }
+  }, [dispatch, currentForm, location.state]);
+
 
   const fieldTypes = [
     { type: 'text', label: 'Text', icon: <TextFields /> },
@@ -96,10 +114,8 @@ const CreatePage: React.FC = () => {
 
   const handleConfirmSave = () => {
     if (currentForm && saveFormName.trim()) {
-      // Update form name if changed
       if (saveFormName !== currentForm.name) {
         dispatch(createNewForm(saveFormName));
-        // Copy fields to new form
         currentForm.fields.forEach(field => {
           dispatch(addField(field));
         });

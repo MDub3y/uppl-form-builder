@@ -1,4 +1,3 @@
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { z } from 'zod';
 
@@ -48,6 +47,11 @@ const formBuilderSlice = createSlice({
   name: 'formBuilder',
   initialState,
   reducers: {
+    // Add the new reducer to reset the current form state
+    resetCurrentForm: (state) => {
+      state.currentForm = null;
+    },
+    
     createNewForm: (state, action: PayloadAction<string>) => {
       const newForm: FormSchema = {
         id: crypto.randomUUID(),
@@ -57,6 +61,9 @@ const formBuilderSlice = createSlice({
         updatedAt: new Date().toISOString(),
       };
       state.currentForm = newForm;
+      // It's a good practice to ensure the savedForms array is also consistent.
+      // If a form with the same ID already exists, it will be updated when saving.
+      // For now, we'll keep the logic of handling saved forms within the saveForm reducer.
     },
     
     addField: (state, action: PayloadAction<Omit<FormField, 'id'>>) => {
@@ -129,6 +136,7 @@ const formBuilderSlice = createSlice({
 });
 
 export const {
+  resetCurrentForm, // Export the new action
   createNewForm,
   addField,
   updateField,

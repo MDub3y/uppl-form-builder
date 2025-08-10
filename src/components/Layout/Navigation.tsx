@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppBar, Toolbar, IconButton, Button, Box, useMediaQuery, useTheme, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { Menu, Close, LightMode, DarkMode, AutoAwesome } from '@mui/icons-material';
 import { RootState } from '../../store';
 import { toggleTheme } from '../../store/slices/themeSlice';
+import { resetCurrentForm } from '@/store/slices/formBuilderSlice';
 
 const Navigation: React.FC = () => {
   console.log('Navigation component rendering');
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -28,6 +30,11 @@ const Navigation: React.FC = () => {
 
   const handleThemeToggle = () => {
     dispatch(toggleTheme());
+  };
+
+  const handleNewFormClick = () => {
+    dispatch(resetCurrentForm());
+    navigate('/create');
   };
 
   const drawer = (
@@ -126,7 +133,7 @@ const Navigation: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Link to={item.path}>
+                  <Link to={item.path} state={{ action: 'new' }}>
                     <Button
                       variant={location.pathname === item.path ? 'contained' : 'text'}
                       className={location.pathname === item.path ? 'gradient-button dark:text-[#CBB5FF]' : ' dark:text-[#CBB5FF]'}

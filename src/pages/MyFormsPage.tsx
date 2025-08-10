@@ -24,7 +24,7 @@ import {
   Assignment
 } from '@mui/icons-material';
 import { RootState } from '../store';
-import { loadForm } from '../store/slices/formBuilderSlice';
+import { loadForm, resetCurrentForm } from '../store/slices/formBuilderSlice';
 import { useToast } from '../hooks/use-toast';
 
 const MyFormsPage: React.FC = () => {
@@ -50,6 +50,11 @@ const MyFormsPage: React.FC = () => {
   const handlePreviewForm = (formId: string) => {
     dispatch(loadForm(formId));
     navigate('/preview');
+  };
+
+  const handleNewFormClick = () => {
+    dispatch(resetCurrentForm());
+    navigate('/create');
   };
 
   const formatDate = (dateString: string) => {
@@ -87,6 +92,7 @@ const MyFormsPage: React.FC = () => {
                 variant="contained"
                 size="large"
                 startIcon={<Add />}
+                onClick={handleNewFormClick}
                 className="gradient-button px-6 py-3"
               >
                 New Form

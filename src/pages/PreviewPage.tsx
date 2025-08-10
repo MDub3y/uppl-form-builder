@@ -54,14 +54,15 @@ const PreviewPage: React.FC = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        className='dark:text[#CBB5FF]'
       >
         <div className="mb-6">
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+          <motion.div className='mb-4' whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Link to="/create">
               <Button
                 startIcon={<ArrowBack />}
                 variant="outlined"
-                className="mb-4"
+                className="mb-4 dark:text-[#CBB5FF]"
               >
                 Back to Editor
               </Button>
@@ -75,7 +76,7 @@ const PreviewPage: React.FC = () => {
             </Typography>
           </div>
           
-          <Typography variant="h4" className="font-bold">
+          <Typography variant="h4" className="font-bold dark:text-[#fff]">
             {currentForm.name}
           </Typography>
           <Typography variant="body2" className="text-muted-foreground">
@@ -83,7 +84,7 @@ const PreviewPage: React.FC = () => {
           </Typography>
         </div>
 
-        <Card className="bg-card/50 backdrop-blur-sm">
+        <Card className="p-4 bg-card/50 backdrop-blur-sm">
           <CardContent className="p-8">
             <Typography variant="h5" className="font-semibold mb-6">
               {currentForm.name}
