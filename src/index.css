@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+:root {
+    /* upliance Form Studio Light Theme */
+    --background: 46 100% 96%;
+    --background-secondary: 273 100% 97%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 261 60% 35%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 261 60% 45%;
+
+    --secondary: 46 100% 94%;
+    --secondary-foreground: 261 60% 35%;
+
+    --muted: 46 100% 94%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 22 100% 56%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 261 60% 35%;
+
+    --radius: 0.75rem;
+    
+    /* Custom upliance gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--background-secondary)));
+    --gradient-button: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+    --shadow-card: 0 4px 20px -2px hsl(var(--primary) / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* upliance Form Studio Dark Theme - Enhanced */
+    --background: 261 20% 6%;
+    --background-secondary: 261 25% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 261 22% 9%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 261 22% 9%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 261 65% 70%;
+    --primary-foreground: 261 20% 6%;
+    --primary-glow: 261 65% 80%;
+
+    --secondary: 261 25% 16%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 261 25% 16%;
+    --muted-foreground: 215 20% 68%;
+
+    --accent: 22 100% 60%;
+    --accent-foreground: 261 20% 6%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 261 25% 20%;
+    --input: 261 25% 16%;
+    --ring: 261 65% 70%;
+    
+    /* Custom upliance dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--background-secondary)));
+    --gradient-button: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    
+    /* Enhanced dark shadows */
+    --shadow-elegant: 0 15px 35px -5px hsl(var(--primary) / 0.4);
+    --shadow-glow: 0 0 50px hsl(var(--primary-glow) / 0.5);
+    --shadow-card: 0 8px 25px -3px hsl(var(--primary) / 0.25);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    background: var(--gradient-background);
+    min-height: 100vh;
+  }
+  
+  /* Custom component styles */
+  .gradient-button {
+    background: var(--gradient-button);
+    transition: var(--transition-smooth);
+  }
+  
+  .gradient-button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .card-spotlight {
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+  }
+  
+  .card-spotlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+      hsl(var(--primary-glow) / 0.15) 0%, 
+      transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .card-spotlight:hover::before {
+    opacity: 1;
+  }
+  
+  .card-spotlight:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-card);
+  }
+}
