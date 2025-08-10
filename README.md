@@ -1,4 +1,4 @@
-# upliance.ai React + Redux Form Builder
+# Uppliance Form Builder
 
 **India's first AI cooking assistant form builder — built with React, TypeScript, MUI, and Redux.**
 
