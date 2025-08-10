@@ -1,73 +1,62 @@
-# Welcome to your Lovable project
+# upliance.ai React + Redux Form Builder
 
-## Project info
+**India's first AI cooking assistant form builder — built with React, TypeScript, MUI, and Redux.**
 
-**URL**: https://lovable.dev/projects/4baa0ae8-3a03-4b86-b27a-2ebff1c9fb86
+---
 
-## How can I edit this code?
+## About upliance.ai
 
-There are several ways of editing your application.
+upliance.ai has built India’s first AI cooking assistant designed for beginners. We simplify and automate all parts of cooking, aiming to push the boundaries of what home appliances can do for young India. As a disruptive startup, we leverage AI and collaborate closely with industry leaders like OpenAI to build innovative hardware products with everyday utility.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4baa0ae8-3a03-4b86-b27a-2ebff1c9fb86) and start prompting.
+## Project Overview
 
-Changes made via Lovable will be committed automatically to this repo.
+This project is a **dynamic form builder** assignment to be completed within 48 hours.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 1. Dynamic Form Builder (/create)
+- Add new fields of various types:
+  - Text, Number, Textarea, Select, Radio, Checkbox, Date
+- Configure each field with:
+  - Label, Required toggle, Default value
+  - Validation rules:
+    - Not empty, Min/Max length, Email format, Custom password rule
+- Mark fields as **Derived Fields**:
+  - Compute values based on one or more parent fields with custom formulas
+- Reorder fields via drag-and-drop and delete fields
+- Save form schema with a custom form name to **localStorage**
 
-Follow these steps:
+### 2. Form Preview (/preview)
+- Render the built form as an end user would see it
+- Support user input and show real-time validations and errors
+- Auto-update derived fields as parent fields change
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 3. My Forms (/myforms)
+- Display a list of saved forms from localStorage
+- Show form name and date of creation
+- Clicking a form opens the form preview page
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## Tech Stack
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+- **React** with TypeScript  
+- **Redux Toolkit** for state management  
+- **Material UI (MUI)** for UI components  
+- **@dnd-kit** for drag-and-drop sorting  
+- **localStorage** for persistence (no backend)
+
+---
+
+## Installation & Running Locally
+
+```bash
+git clone https://github.com/your-username/upliance-form-builder.git
+cd upliance-form-builder
+npm install
+npm start
 ```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/4baa0ae8-3a03-4b86-b27a-2ebff1c9fb86) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
